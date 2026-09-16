@@ -15,17 +15,17 @@ int perfect(int n)
 
 int main()
 {
-    int num; 
+    int value; 
     printf("Enter a number: ");
-    scanf("%d",&num);
+    scanf("%d",&value);
     
-    if (perfect(num))
+    if (perfect(value))
     {
-        printf("The %d is PERFECT.",num);
+        printf("The %d is PERFECT.",value);
     }
     else
     {
-        printf("The %d is not PERFECT.",num);
+        printf("The %d is not PERFECT.",value);
     }
     return 0;
 }
