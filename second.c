@@ -119,7 +119,7 @@ int main()
     }
 }*/
 
-#include <stdio.h>
+/*#include <stdio.h>
 
 int neon(int n)
 {
@@ -147,4 +147,102 @@ int main()
     {
         printf("The %d is not NEON",value);
     }
+}*/
+
+/*#include <stdio.h>
+
+int spy(int n)
+{
+    int sum = 0;
+    int fact = 1;
+    for (int i = n; i != 0; i = i/10)
+    {
+        int lastdig = i % 10;
+        sum += lastdig;
+        fact *= lastdig;
+    }
+    return sum == fact;
+}
+
+int main()
+{
+    int value;
+    printf("Number = ");
+    scanf("%d",&value);
+
+    if (spy(value))
+    {
+        printf("The %d is SPY NUMBER.",value);
+    }
+    else
+    {
+        printf("The %d is not SPY NUMBER.",value);
+    }
+    return 0;
+}*/
+
+/*#include <stdio.h>
+
+int duck(int n)
+{
+    for (int i = n; i > 0; i = i/10)
+    {
+        int lastdig = i % 10;
+        if (lastdig == 0)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int main()
+{
+    int value;
+    printf("Number = ");
+    scanf("%d",&value);
+
+    if (duck(value))
+    {
+        printf("The %d is DUCK NUMBER.",value);
+    }
+    else
+    {
+        printf("The %d is not DUCK NUMBER.",value);
+    }
+}*/
+
+#include <stdio.h>
+int happy(int n)
+{
+    int lastdig;
+    for (int i = n; i > 0; i = i/10)
+    {
+        int sum = 0;
+        for(int j = i; j > 0; j = j/10)
+        {
+            lastdig = j % 10;
+            int sq = lastdig*lastdig;
+            sum += sq;
+            i = sum;
+        }
+        return sum == 1;
+    }
+}
+
+int main()
+{
+    int value;
+    printf("VALUE = ");
+    scanf("%d",&value);
+
+    if (happy(value))
+    {
+        printf("The %d is the HAPPY NUMBER.",value);
+    }
+    else
+    {
+        printf("The %d is not HAPPY NUMBER.",value);
+    }
+    return 0;
 }
