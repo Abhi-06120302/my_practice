@@ -212,22 +212,23 @@ int main()
     }
 }*/
 
-#include <stdio.h>
+/*#include <stdio.h>
 int happy(int n)
 {
     int lastdig;
-    for (int i = n; i > 0; i = i/10)
+    while (n != 1)
     {
         int sum = 0;
-        for(int j = i; j > 0; j = j/10)
+        while (n != 0)
         {
-            lastdig = j % 10;
+            lastdig = n % 10;
             int sq = lastdig*lastdig;
-            sum += sq;
-            i = sum;
+            sum = sum + sq;
+            n = n/10;
         }
-        return sum == 1;
+        n = sum;
     }
+    return n == 1;
 }
 
 int main()
@@ -243,6 +244,86 @@ int main()
     else
     {
         printf("The %d is not HAPPY NUMBER.",value);
+    }
+    return 0;
+}*/
+
+/*#include <stdio.h>
+
+int disarium(int n)
+{
+    int count = 0;
+    int sum = 0;
+    for(int i = n; i != 0; i = i/10)
+    {
+        int lastdig = i % 10;
+        sum = (sum*10) + lastdig;
+    }
+    int rev = sum;
+    int dis = 0;
+    for(int j = rev; j != 0; j = j/10)
+    {
+        int place = j % 10;
+        count++;
+        int pow = 1;
+        for(int a = 1; a <= count; a++)
+        {
+            pow *= place;
+        }
+        dis = dis + pow;
+    }
+    return dis == n;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if (disarium(n))
+    {
+        printf("The %d is the DISARIUM NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not DISARIUM NUMBER.",n);
+    }
+    return 0;
+}*/
+
+#include <stdio.h>
+
+int magic(int n)
+{
+    
+    while (n != 1)
+    {
+        int sum = 0;
+        while (n != 0)
+        {
+            int lastdig = n % 10;
+            sum += lastdig;
+            n = n/10;
+        }
+        n = sum;
+    }
+    return n == 1;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if (magic(n))
+    {
+        printf("The %d is MAGIC NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not MAGIC NUMBER.");
     }
     return 0;
 }
