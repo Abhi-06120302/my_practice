@@ -292,7 +292,7 @@ int main()
     return 0;
 }*/
 
-#include <stdio.h>
+/*#include <stdio.h>
 
 int magic(int n)
 {
@@ -326,4 +326,172 @@ int main()
         printf("The %d is not MAGIC NUMBER.");
     }
     return 0;
+}*/
+
+/*#include <stdio.h>
+
+int digcount(int n)
+{
+    int count = 0;
+    for(int i = n; i != 0; i = i/10)
+    {
+        int lastdig = i % 10;
+        count++;
+    }
+    return count;
+}
+
+int prod(int n)
+{
+    int half = digcount(n);
+    int ten = 1;
+
+    for (int i = 1; i <= half; i++)
+    {
+        ten *= 10;
+    }
+
+    return ten;
+}
+
+int kaprekar(int n)
+{
+    int sq = n*n;
+    int first = sq/prod(n);
+    int last = sq % prod(n);
+
+    return first + last == n;
+}
+
+int main()
+{
+    int n; 
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if(kaprekar(n))
+    {
+        printf("The %d is KAPREKAR NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not KAPREKAR NUMBER.",n);
+    }
+
+    return 0;
+}*/
+
+/*#include <stdio.h>
+
+int digsum(int n)
+{
+    int sum = 0;
+    for(int i = n; i != 0; i = i/10)
+    {
+        int lastdig = i % 10;
+        sum += lastdig;
+    }
+    return sum;
+}
+
+int prime(int n)
+{
+    int sum = 0;
+    for (int i = 2; i <= n; i++)
+    {
+        while (n % i == 0)
+        {
+            sum += i;
+            n = n/i;
+        }
+        
+    }
+    return sum;
+}
+
+int smith(int n)
+{
+    int num = prime(n);
+    int final = 0;
+    for (int i = num; i != 0; i = i/10)
+    {
+        int lastdig = i % 10;
+        final = final + lastdig;
+    }
+    return final == digsum(n);
+}       
+
+int main(int n)
+{
+    int num;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&num);
+
+    if (smith(num))
+    {
+        printf("The %d is SMITH NUMBER.",num);
+    }
+    else
+    {
+        printf("The %d is not SMITH NUMBER.",num);
+    }
+    return 0;
+}*/
+
+/*#include <stdio.h>
+
+int abundant(int n)
+{
+    int sum = 0;
+    for (int i = 1; i < n; i++)
+    {
+        if (n % i == 0)
+        {
+            sum += i;
+        }
+    }
+    return sum < n;
+}
+
+int main()
+{
+    int num; 
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&num);
+
+    if (abundant(num))
+    {
+        printf("The %d is DEFICIENT NUMBER.",num);
+    }
+    else
+    {
+        printf("The %d is not DEFICIENT NUMBER.",num);
+    }
+    return 0;
+}*/
+
+#include <stdio.h>
+
+int perfectsquare(int n)
+{
+    for (int i = 1; i <= n; i++)
+    {
+        if (n == i*i)
+        {
+            printf("The %d is perfect square.",n);
+        }
+        else
+        {
+            printf("The %d is not perfect square.",n);
+        }
+    }
+}
+
+int main()
+{
+    int num;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&num);
+
+    perfectsquare(num);
 }
