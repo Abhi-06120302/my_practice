@@ -470,7 +470,7 @@ int main()
     return 0;
 }*/
 
-#include <stdio.h>
+/*#include <stdio.h>
 
 int perfectsquare(int n)
 {
@@ -478,11 +478,7 @@ int perfectsquare(int n)
     {
         if (n == i*i)
         {
-            printf("The %d is perfect square.",n);
-        }
-        else
-        {
-            printf("The %d is not perfect square.",n);
+            return 1;
         }
     }
 }
@@ -493,5 +489,199 @@ int main()
     printf("ENTER A NUMBER: ");
     scanf("%d",&num);
 
-    perfectsquare(num);
+    
+    if (perfectsquare(num))
+    {
+        printf("The %d is PERFECT SQUARE.",num);
+    }
+    else
+    {
+        printf("The %d is not PERFECT SQUARE.",num);
+    }
+    return 0;
+}*/
+
+/*#include <stdio.h>
+
+int perfectcube(int n)
+{
+    for (int i = 1; i <= n; i++)
+    {
+        if (n == i*i*i)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int main()
+{
+    int num;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&num);
+    if (perfectcube(num))
+    {
+        printf("The %d is PERFECT CUBE.",num);
+    }
+    else
+    {
+        printf("The %d is not PERFECT CUBE.",num);
+    }
+    return 0;
+}*/
+
+/*#include <stdio.h>
+
+int fascinating(int n)
+{
+    int twice = n * 2;
+    int thrice = n * 3;
+    int fact = 1;
+    int prod = 1;
+    int original;
+    for (int i = twice; i != 0; i = i/10)
+    {
+        fact *= 10;
+    }
+    original = (n * fact) + twice;
+    for (int i = thrice; i != 0; i = i/10)
+    {
+        prod *= 10;
+    }
+    original = (original * prod) + thrice;
+    for (int i = original; i != 0; i = i/10)
+    {
+        int lastdig = i % 10;
+        int count = 0;
+        for (int j = original; j != 0; j = j/10)
+        {
+            if (lastdig == j % 10)
+            {
+                count++;
+            }
+        }
+        if (count > 1) 
+        {
+            return 0;
+        }
+        if (lastdig == 0)
+        {
+            return 0;
+        }
+    }
+
+    int digit = 0;
+    for (int i = original; i != 0; i = i/10)
+    {
+        digit++;
+    }
+    if (digit != 9)
+    {
+        return 0;
+    }
+    return 1;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if (fascinating(n))
+    {
+        printf("The %d is FASCINATING NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not FASCINATING NUMBER.",n);
+    }
+    return 0;
+}*/
+
+/*#include <stdio.h>
+
+int keith(int n)
+{
+    int lastdig,a,b;
+    int original = n;
+    lastdig = n % 10;
+
+    n = n / 10;
+    b = n % 10;
+    n = n / 10;
+    a = n % 10;
+
+    int sum;
+    while (lastdig < original)
+    {
+        sum = a + b + lastdig;
+        a = b;
+        b = lastdig;
+        lastdig = sum;
+    }
+    return original == lastdig;
+}
+
+int main()
+{
+    int n;
+    printf("Enter a num : ");
+    scanf("%d",&n);
+
+    if (keith(n))
+    {
+        printf("The %d is KEITH NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not KEITH NUMBER.",n);
+    }
+    return 0;
+}*/
+
+#include <stdio.h>
+
+int evil(int n)
+{
+    int sum = 0;
+    while (n != 0)
+    {
+        int a = n % 2;
+        sum = (sum*10) + a;
+        n = n/2;
+    }
+    int var = sum;
+    int count = 0;
+    for (int i = var; i != 0; i = i/10)
+    {
+        int lastdig = i % 10;
+        if (lastdig == 1)
+        {
+            count++;
+        }
+    }
+    if (count % 2 == 0)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A VALUE: ");
+    scanf("%d",&n);
+
+    if (evil(n))
+    {
+        printf("The %d is EVIL NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not EVIL NUMBER.",n);
+    }
+    return 0;
 }
