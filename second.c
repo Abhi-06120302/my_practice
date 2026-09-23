@@ -641,7 +641,7 @@ int main()
     return 0;
 }*/
 
-#include <stdio.h>
+/*#include <stdio.h>
 
 int evil(int n)
 {
@@ -682,6 +682,134 @@ int main()
     else
     {
         printf("The %d is not EVIL NUMBER.",n);
+    }
+    return 0;
+}*/
+
+/*#include <stdio.h>
+
+int bouncy(int n)
+{
+    int increase = 0;
+    int decrease = 0;
+    for (int i = n; i > 0;)
+    {
+        int lastdig = i % 10;
+        i = i/10;
+        if (i == 0)
+        {
+            break;
+        }
+        int ld = i % 10;
+        if (lastdig > ld)
+        {
+            increase = 1;
+        }
+        else if (lastdig < ld)
+        {
+            decrease = 1;
+        }
+    }
+    return increase == 1 && decrease == 1;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if (bouncy(n))
+    {
+        printf("The %d is BOUNCY NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not BOUNCY NUMBER.",n);
+    }
+    return 0;
+}*/
+
+/*#include <stdio.h>
+
+int circular(int n)
+{
+    int prod = 1;
+    int original = n;
+    for (int i = n; i != 0; i = i/10)
+    {
+        prod = prod * 10;
+    }
+    int mult = prod;
+    int rev;
+    do
+    {
+        int count = 0;
+        int a = n % (mult/10);
+        int b = n /(mult/10);
+        rev = (a*10)+b;
+        for (int i = 1; i <= rev; i++)
+        {
+            if (rev % i == 0)
+            {
+                count++;
+            }
+        }
+        if (count != 2)
+        {
+            return 0;
+        }
+        n = rev;
+        
+    } while (n != original);
+    return 1;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if (circular(n))
+    {
+        printf("The %d is CIRCULAR PRIME",n);
+    }
+    else
+    {
+        printf("The %d is not CIRCULAR PRIME.",n);
+    }
+    return 0;
+}*/
+
+#include <stdio.h>
+
+int trimorphic(int n)
+{
+    int prod = 1;
+    for(int i = n; i != 0; i = i/10)
+    {
+        prod *= 10;
+    }
+    int a = n*n*n;
+
+    int lastdig = a % (prod);
+    return n == lastdig;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if (trimorphic(n))
+    {
+        printf("The %d is TRIMORPHIC NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not TRIMORPHIC NUMBER.",n);
     }
     return 0;
 }
