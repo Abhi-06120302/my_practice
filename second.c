@@ -782,7 +782,7 @@ int main()
     return 0;
 }*/
 
-#include <stdio.h>
+/*#include <stdio.h>
 
 int trimorphic(int n)
 {
@@ -811,5 +811,74 @@ int main()
     {
         printf("The %d is not TRIMORPHIC NUMBER.",n);
     }
+    return 0;
+}*/
+
+/*#include <stdio.h>
+
+int pronic(int n)
+{
+    for (int i = 1; i < n; i++)
+    {
+        if (n == i*(i + 1))
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if (pronic(n))
+    {
+        printf("PRONIC NUMBER.");
+    }
+    else
+    {
+        printf("NOT PRONIC NUMBER.");
+    }
+    return 0;
+}*/
+
+#include <stdio.h>
+
+int sphenic(int n)
+{
+    int fact = 1,count;
+    for (int i = 1; i <= n; i++)
+    {
+        {
+            count = 0;
+            if (n % i == 0)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    if (i % j == 0)
+                    {
+                        count++;
+                    }
+                }
+            }
+        }
+        if (count == 2)
+        {
+            fact *= i;
+        }
+    }
+    return fact == n;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    sphenic(n);
     return 0;
 }
