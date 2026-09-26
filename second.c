@@ -845,32 +845,62 @@ int main()
     return 0;
 }*/
 
-#include <stdio.h>
+/*#include <stdio.h>
+int isprime(int n)
+{
+    int count = 0;
+    if (n <= 1)
+    {
+        return 0;
+    }
+    for (int i = 2; i*i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int sphenicO(int n)
+{
+    int fact = 1;
+    int factorcount = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        if (n % i == 0 && isprime(i))
+        {
+            factorcount++;
+            fact*=i;
+        }
+    }
+    return fact == n && factorcount == 3;
+}
 
 int sphenic(int n)
 {
-    int fact = 1,count;
-    for (int i = 1; i <= n; i++)
+    int count = 0;
+
+    for (int i = 2; i * i <= n; i++)
     {
+        if (n % i == 0)
         {
-            count = 0;
+            count++;
+            n /= i;
             if (n % i == 0)
             {
-                for (int j = 1; j <= i; j++)
-                {
-                    if (i % j == 0)
-                    {
-                        count++;
-                    }
-                }
+                return 0;
             }
         }
-        if (count == 2)
-        {
-            fact *= i;
-        }
     }
-    return fact == n;
+
+    if (n > 1)
+    {
+        count++;
+    }
+
+    return count == 3;
 }
 
 int main()
@@ -879,6 +909,128 @@ int main()
     printf("ENTER A NUMBER: ");
     scanf("%d",&n);
 
-    sphenic(n);
+    if (sphenic(n))
+    {
+        printf("The %d is SPHENIC NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not SPHENIC NUMBER.",n);
+    }
     return 0;
+}*/
+
+/*#include <stdio.h>
+
+int isprime(int n)
+{
+    int count = 0;
+    if (n <= 1)
+    {
+        return 0;
+    }
+    for (int i = 2; i*i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}*/
+
+/*int digitsum(int n)
+{
+    int sum = 0;
+    for (int i = n; i != 0; i = i/10)
+    {
+        sum = sum + (i % 10);
+    }
+    return sum;
+}
+
+int factorsum(int n)
+{
+    int sum = 0;
+    for (int i = 2; i*i <= n; i++)
+    {
+        while (n % i == 0)
+        {
+            sum = sum + digitsum(i);
+            n = n/i;
+        }
+        
+    }
+    if (n > 1)
+    {
+        sum = sum + digitsum(n);
+    }
+    return sum;
+}
+
+int smith(int n)
+{
+    if (isprime(n))
+    {
+        return 0;
+    }
+    return digitsum(n) == factorsum(n);
+}*/
+
+/*int reverse(int n)
+{
+    int rev = 0;
+    for (int i = n; i != 0; i = i/10)
+    {
+        rev = (i % 10) + (rev*10);
+    }
+    return rev;
+}
+
+int emirp(int n)
+{
+    int rev = reverse(n);
+    if (isprime(n) && isprime(rev) && n != rev)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if (emirp(n))
+    {
+        printf("The %d is EMIRP NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not EMIRP NUMBER.",n);
+    }
+    return 0;
+}*/
+
+int power(int n)
+{
+    int pow;
+    for (int i = 2; i*i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            pow = 0;
+            while (n % i == 0)
+            {
+                n = n/i;
+                pow++;
+            }
+        }
+        if (pow > 1)
+        {
+            
+        }
+    }
 }
