@@ -1014,7 +1014,8 @@ int main()
     return 0;
 }*/
 
-int power(int n)
+/*#include <stdio.h>
+int powerful(int n)
 {
     int pow;
     for (int i = 2; i*i <= n; i++)
@@ -1027,10 +1028,142 @@ int power(int n)
                 n = n/i;
                 pow++;
             }
-        }
-        if (pow > 1)
-        {
-            
+            if (pow < 2)
+            {
+                return 0;
+            }
         }
     }
+    if (n > 1)
+    {
+        return 0;
+    }
+    return 1;
+}
+
+int GCD(int a, int b)
+{
+    int g;
+    while (b != 0)
+    {
+        g = a % b;
+        a = b;
+        b = g;
+    }
+    return a;
+}
+
+int perfectpower(int n)
+{
+    int pow;
+    int g;
+    int count = 0;
+    for (int i = 2; i*i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            pow = 0;
+            while (n % i == 0)
+            {
+                n = n/i;
+                pow++;
+            }
+            if (count == 0)
+            {
+                g = pow;
+                count++;
+            }
+            else
+            {
+                g = GCD(pow,g);
+            }
+        }
+    }
+    if (n > 1)
+    {
+        if (count == 0)
+        {
+            g = 1;
+        }
+        else
+        {
+            g = GCD(g,1);
+        }
+    }
+    
+    if (g > 1)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+int achilles(int n)
+{
+    if (powerful(n) &&! perfectpower(n))
+    {
+        return 1;
+    }
+    return 0;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+    
+    if (achilles(n))
+    {
+        printf("The %d is ACHILLES NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not ACHILLES NUMBER.",n);
+    }
+    return 0;
+}*/
+
+#include <stdio.h>
+int amicable(int a, int b)
+{
+    int sum = 0;
+    int final = 0;
+    for (int i = 1; i <= a/2; i++)
+    {
+        if (a % i == 0)
+        {
+            sum += i;
+        }
+    }
+
+    for (int j = 1; j <= b/2; j++)
+    {
+        if (b % j == 0)
+        {
+            final += j;
+        }
+    }
+
+    return sum == b && final == a;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER FIRST NUMBER: ");
+    scanf("%d",&n);
+    int m;
+    printf("ENTER SECOND NUMBER: ");
+    scanf("%d",&m);
+    
+    if (amicable(n,m))
+    {
+        printf("The %d and %d is AMICABLE NUMBER.",n,m);
+    }
+    else
+    {
+        printf("The %d and %d is not AMICABLE NUMBER.",n,m);
+    }
+    return 0;
 }
