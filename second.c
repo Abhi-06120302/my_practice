@@ -1124,7 +1124,7 @@ int main()
     return 0;
 }*/
 
-#include <stdio.h>
+/*#include <stdio.h>
 int amicable(int a, int b)
 {
     int sum = 0;
@@ -1166,4 +1166,127 @@ int main()
         printf("The %d and %d is not AMICABLE NUMBER.",n,m);
     }
     return 0;
+}*/
+
+/*
+#include <stdio.h>
+
+int tech(int n)
+{
+    int count = 0;
+    int first;
+    int last;
+    int fact = 1;
+    int final;
+    for (int i = n; i != 0; i = i/10)
+    {
+        count++;
+    }
+    if (count % 2 == 0)
+    {
+        for (int j = 1; j <= count/2; j++)
+        {
+            fact *= 10;
+        }
+        first = n/fact;
+        last = n%fact;
+        final = first + last;
+    }
+    if (count % 2 != 0)
+    {
+        return 0;
+    }
+
+    return (final*final) == n;
 }
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if (tech(n))
+    {
+        printf("The %d is TECH NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not TECH NUMBER.",n);
+    }
+    return 0;
+}*/
+
+/*#include <stdio.h>
+
+int reverse(int n)
+{
+    int rev = 0;
+    for (int i = n; i != 0; i = i/10)
+    {
+        int d = i % 10;
+        rev = d + (rev*10);
+    }
+    return rev;
+}
+int adam(int n)
+{
+    int a = n*n;
+    int actual = reverse(a);
+    int after = reverse(n);
+    return (after*after) == actual;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if (adam(n))
+    {
+        printf("The %d is ADAM NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not ADAM NUMBER.",n);
+    }
+    return 0;
+}*/
+
+/*#include <stdio.h>
+
+int peterson(int n)
+{
+    int sum = 0;
+    int prod;
+    for (int i = n; i != 0; i = i/10)
+    {
+        int d = i % 10;
+        prod = 1;
+        for (int j = 1; j <= d; j++)
+        {
+            prod *= j;
+        }
+        sum += prod;
+    }
+    return sum == n;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if (peterson(n))
+    {
+        printf("The %d is PETERSON NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not PETERSON NUMBER.",n);
+    }
+    return 0;
+}*/
+
