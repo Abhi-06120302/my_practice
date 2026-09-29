@@ -1290,3 +1290,88 @@ int main()
     return 0;
 }*/
 
+/*#include <stdio.h>
+
+int divide(int dividend,int divisor)
+{
+    int sign = 1;
+    int count = 0;
+    if (divisor == 0)
+    {
+        return 0;
+    }
+    if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0))
+    {
+        sign = -1;
+    }
+    if (dividend < 0)
+    {
+        dividend = -dividend;
+    }
+
+    if (divisor < 0)
+    {
+        divisor = -divisor;
+    }
+    while (dividend >= divisor)
+    {
+        dividend = dividend - divisor;
+        count++;
+    }
+    return count*sign;
+}
+int main()
+{
+    int dividend;
+    printf("ENTER DIVIDEND: ");
+    scanf("%d",&dividend);
+
+    int divisor;
+    printf("ENTER DIVISOR: ");
+    scanf("%d",&divisor);
+
+    printf("The QUOTIENT of %d and %d is %d.",dividend,divisor,divide(dividend,divisor));
+    return 0;
+}*/
+
+#include <stdio.h>
+
+int ugly(int n)
+{
+    for (int i = 2; i*i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            while (n % i == 0)
+            {
+                n = n/i;
+            }
+        }
+        if (i % 2 == 0 && i % 3 == 0 && i % 5 == 0 || i % 2 == 0 || i % 3 == 0 || i % 5 == 0)
+        {
+            return 1;
+        }
+    }
+    if (n == 1)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if (ugly(n))
+    {
+        printf("The %d is UGLY NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not UGLY NUMBER.",n);
+    }
+    return 0;
+}
