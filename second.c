@@ -1334,29 +1334,27 @@ int main()
     return 0;
 }*/
 
-#include <stdio.h>
+/*#include <stdio.h>
 
 int ugly(int n)
 {
-    for (int i = 2; i*i <= n; i++)
+    if (n <= 0)
     {
-        if (n % i == 0)
-        {
-            while (n % i == 0)
-            {
-                n = n/i;
-            }
-        }
-        if (i % 2 == 0 && i % 3 == 0 && i % 5 == 0 || i % 2 == 0 || i % 3 == 0 || i % 5 == 0)
-        {
-            return 1;
-        }
+        return 0;
     }
-    if (n == 1)
+    while (n % 2 == 0)
     {
-        return 1;
+        n = n/2;
     }
-    return 0;
+    while (n % 3 == 0)
+    {
+        n = n/3;
+    }
+    while (n % 5 == 0)
+    {
+        n = n/5;
+    }
+    return n == 1;    
 }
 
 int main()
@@ -1372,6 +1370,197 @@ int main()
     else
     {
         printf("The %d is not UGLY NUMBER.",n);
+    }
+    return 0;
+}*/
+
+/*#include <stdio.h>
+
+int palindrome(int n)
+{
+    int reverse = 0;
+    for (int i = n; i != 0; i = i/10)
+    {
+        int lastdig = i % 10;
+        reverse = lastdig + (reverse*10);
+    }
+    return n == reverse;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if (palindrome(n))
+    {
+        printf("The %d is PALINDROME NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not PALINDROME NUMBER.",n);
+    }
+    return 0;
+}*/
+
+/*#include <stdio.h>
+
+int reverse(int n)
+{
+    int rev = 0;
+    for (int i = n; i != 0; i = i/10)
+    {
+        int lastdig = i % 10;
+        rev = lastdig + (rev*10);
+    }
+    return rev;
+}
+
+int adam(int n)
+{
+    int nsq = n*n;
+    int afterrev = reverse(nsq);
+    int nrev = reverse(n);
+    return nrev*nrev == afterrev;
+}*/
+
+/*#include <stdio.h>
+
+int prime(int n)
+{
+    int factor = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            factor++;
+        }
+    }
+    if (factor == 2)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+int happy(int n)
+{
+    if (prime(n))
+    {
+        while (n != 1 && n != 4)
+        {
+            int sum = 0;
+            while (n != 0)
+            {
+                int ld = n % 10;
+                sum += (ld*ld);
+                n = n/10;
+            }
+            n = sum;
+        }
+    }
+    return n == 1;
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if (happy(n))
+    {
+        printf("The %d is HAPPY PRIME NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not HAPPY PRIME NUMBER.",n);
+    }
+    return 0;
+}*/
+
+/*#include <stdio.h>
+
+int reverse(int n)
+{
+    int rev = 0;
+    for (int i = n; i != 0; i = i/10)
+    {
+        int ld = i % 10;
+        rev = ld + (rev * 10);
+    }
+    return rev;
+}
+
+int prime(int n)
+{
+    int factor = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            factor++;
+        }
+    }
+    if (factor == 2)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+int twistedprime(int n)
+{
+    int nrev = reverse(n);
+    return prime(n) && prime(nrev);
+}
+
+int main()
+{
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
+
+    if (twistedprime(n))
+    {
+        printf("The %d is TWISTED PRIME NUMBER.",n);
+    }
+    else
+    {
+        printf("The %d is not TWISTED PRIME NUMBER.",n);
+    }
+    return 0;
+}*/
+
+#include <stdio.h>
+
+int main()
+{
+    int a[100],i,j,key,n;
+    printf("ENTER NUMBER OF ELEMENT OF ARRAY: ");
+    scanf("%d",&n);
+
+    printf("ENTER ELEMENTS OF ARRAY: ");
+    for (int i = 1; i <= n; i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    for (int i = 2; i <= n; i++)
+    {
+        key = a[i];
+        j = i - 1;
+        while (j >= 1 && a[j] > key)
+        {
+            a[j + 1] = a[j];
+            j--;
+        }
+        a[j + 1] = key;
+    }
+    printf("SORTED ARRAY: \n");
+    for (int i = 0; i <= n; i++)
+    {
+        printf("%d\t",a[i]);
     }
     return 0;
 }
