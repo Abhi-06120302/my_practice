@@ -1634,7 +1634,7 @@ int main()
     return 0;
 }*/
 
-#include <stdio.h>
+/*#include <stdio.h>
 
 int partition(int a[], int low, int high)
 {
@@ -1677,4 +1677,21 @@ int main()
         printf("%d",a[i]);
     }
     return 0;
+}*/
+
+#include <stdio.h>
+
+void function(int n)
+{
+    if (n == 0)
+    {
+        return;
+    }
+    printf("%d",n);
+    function (n - 1);
+}
+
+int main()
+{
+    function(9);
 }
