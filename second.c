@@ -1679,7 +1679,7 @@ int main()
     return 0;
 }*/
 
-#include <stdio.h>
+/*#include <stdio.h>
 void merge(int a[], int low, int mid, int high)
 {
     int i = low;
@@ -1740,5 +1740,60 @@ int main()
         printf("%d\n",a[i]);
     }
     return 0;
+}*/
+
+#include <stdio.h>
+int gcd(int a, int b)
+{
+    int d;        
+    while (b != 0)
+    {
+        d = a % b;
+        a = b;
+        b = d;
+    }
+    return a;
 }
 
+int perfectpower(int n)
+{
+    int count;
+    int expo = 0;
+    for (int i = 2; n > 1; i++)
+    {
+        count = 0;
+        while (n % i == 0)
+        {
+            n = n/i;
+            count++;
+        }
+    
+        if (count > 0)
+        {
+            expo = gcd(expo,count);
+        }
+    }
+    if (expo > 1)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+int main()
+{
+    int a = 12;
+    int b = 8;
+
+    printf("%d",gcd(a,b));
+
+    if (powerful(72))
+    {
+        printf("THIS IS POWERFUL NUMBER.");
+    }
+    else
+    {
+        printf("THIS IS NOT POWERFUL NUMBER.");
+    }
+    return 0;
+}
