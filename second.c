@@ -1742,7 +1742,7 @@ int main()
     return 0;
 }*/
 
-#include <stdio.h>
+/*#include <stdio.h>
 int gcd(int a, int b)
 {
     int d;        
@@ -1757,9 +1757,13 @@ int gcd(int a, int b)
 
 int perfectpower(int n)
 {
+    if (n <= 1)
+    {
+        return 0;
+    }
     int count;
     int expo = 0;
-    for (int i = 2; n > 1; i++)
+    for (int i = 2; i*i <= n; i++)
     {
         count = 0;
         while (n % i == 0)
@@ -1767,11 +1771,14 @@ int perfectpower(int n)
             n = n/i;
             count++;
         }
-    
         if (count > 0)
         {
             expo = gcd(expo,count);
         }
+    }
+    if (n > 1)
+    {
+        expo = gcd(expo,1);
     }
     if (expo > 1)
     {
@@ -1780,20 +1787,88 @@ int perfectpower(int n)
     return 0;
 }
 
+int powerful(int n)
+{
+    int count;
+    if (n <= 0)
+    {
+        return 0;
+    }
+    for (int i = 2; i*i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            count = 0;
+            while (n % i == 0)
+            {
+                n = n/i;
+                count++;
+            }
+            if (count == 1)
+            {
+                return 0;
+            }
+        }
+    }
+    if (n > 1)
+    {
+        return 0;
+    }
+    return 1;
+}
+
+int achilles(int n)
+{
+    if (powerful(n) &&! perfectpower(n))
+    {
+        return 1;
+    }
+    return 0;
+}
+
 int main()
 {
-    int a = 12;
-    int b = 8;
+    int n;
+    printf("ENTER A NUMBER: ");
+    scanf("%d",&n);
 
-    printf("%d",gcd(a,b));
-
-    if (powerful(72))
+    if (achilles(n))
     {
-        printf("THIS IS POWERFUL NUMBER.");
+        printf("GIVEN NUMBER IS ACHILLES.");
     }
     else
     {
-        printf("THIS IS NOT POWERFUL NUMBER.");
+        printf("GIVEN NUMBER IS NOT ACHILLES.");
+    }
+    return 0;
+}*/
+
+#include <stdio.h>
+int sunny(int n)
+{
+    if (n <= 0)
+    {
+        return 0;
+    }
+    for (int i = 1; i*i <= n + 1; i++)
+    {
+        if (n + 1 == i*i)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int main()
+{
+    if (sunny(8))
+    {
+        printf("YAA!!");
+    }
+    else
+    {
+        printf("OUCH!!");
     }
     return 0;
 }
